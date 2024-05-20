@@ -76,6 +76,7 @@ const SearchableInput: React.FC = () => {
       loading={isLoading}
       value={selectedValues}
       onChange={(e, newValue) => {
+        console.log("e",e)
         setSelectedValues(newValue);
       }}
       renderTags={(value: any[], getTagProps: any) =>
