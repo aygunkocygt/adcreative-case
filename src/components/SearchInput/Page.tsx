@@ -6,6 +6,7 @@ import {
   Box,
   Typography,
   Paper,
+  Checkbox,
 } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -76,7 +77,7 @@ const SearchableInput: React.FC = () => {
       loading={isLoading}
       value={selectedValues}
       onChange={(e, newValue) => {
-        console.log("e",e)
+        console.log("e", e);
         setSelectedValues(newValue);
       }}
       renderTags={(value: any[], getTagProps: any) =>
@@ -128,12 +129,13 @@ const SearchableInput: React.FC = () => {
           )}
         </>
       )}
-      renderOption={(props, option) => (
+      renderOption={(props, option, { selected }) => (
         <Box
           component="li"
           {...props}
-          sx={{ borderBottom: "1px solid #94A3B8" }}
+          sx={{ borderBottom: "1px solid #94A3B8", display: 'flex', alignItems: 'center' }}
         >
+          <Checkbox checked={selected || selectedValues.some(value => value.name === option.name)} />
           <Avatar variant="rounded" src={option.image} sx={{ mr: 2 }} />
           <div>
             <Typography variant="body1">
